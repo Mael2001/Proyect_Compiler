@@ -32,7 +32,7 @@ namespace Compiler.Parser
             EnvironmentManager.PushContext();
             var block = Block();
             block.ValidateSemantic();
-            block.Interpret();
+            EnvironmentManager.PopContext();
             var code = block.Generate(0);
             System.IO.File.WriteAllText(@"C:\Users\Public\code.js", code);
             Console.WriteLine(code);
@@ -284,14 +284,6 @@ namespace Compiler.Parser
                 var token = _lookAhead;
                 Move();
                 expression = new RelationalExpression(token, expression as TypedExpression, Expr() as TypedExpression);
-            }
-
-            if (this._lookAhead.TokenType == TokenType.InKeyword)
-            {
-                var token = _lookAhead;
-                Move();
-                Match(TokenType.Identifier);
-                expression = new ArgumentExpression(token, expression as TypedExpression, null);
             }
             return expression;
         }

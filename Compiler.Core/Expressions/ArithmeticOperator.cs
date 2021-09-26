@@ -17,9 +17,11 @@ namespace Compiler.Core.Expressions
                 { (Type.Float, Type.Float), Type.Float },
                 { (Type.Int, Type.Int), Type.Int },
                 { (Type.String, Type.String), Type.String },
+                { (Type.String, Type.Float), Type.String },
+                { (Type.String, Type.Int), Type.String },
                 { (Type.Float, Type.Int), Type.Float },
                 { (Type.Int, Type.Float), Type.Float },
-                { (Type.Float, Type.String), Type.String},
+                { (Type.Float, Type.String), Type.String },
                 { (Type.Date, Type.Date), Type.Date},
                 { (Type.Date, Type.Int), Type.Date}
             };
