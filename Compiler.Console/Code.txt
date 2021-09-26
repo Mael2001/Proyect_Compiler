@@ -36,8 +36,10 @@ q++;
 q--;
 a := o + 'hola peter!';
 foreach(x in lista)
+{
 q++;
 q--;
+}
 while(o >= 10 || x>12)
 q++;
 Console.WriteLine(q);
@@ -55,9 +57,9 @@ else
     q:= 'adios';
 y:=6+2+3+5;
 
-if(! x>1 ){
+if(! x>1 )
     x++;
-}
+
 }
 }
 
