@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Compiler.Core.Enum;
 using Compiler.Core.Interfaces;
-using Compiler.Core.Models;
 using Compiler.Core.Models.Lexer;
 
 namespace Compiler.Lexer
@@ -141,8 +140,7 @@ namespace Compiler.Lexer
                 {
                     case '/':
                     {
-                        currentChar = PeekNextChar();
-                        if (currentChar != '*')
+                        if (PeekNextChar() != '*')
                         {
                             lexeme.Append(currentChar);
                             return new Token
@@ -186,7 +184,6 @@ namespace Compiler.Lexer
                                 };
                             case '>':
                                 lexeme.Append(nextChar);
-                                currentChar = GetNextChar();
                                 return new Token
                                 {
                                     TokenType = TokenType.NotEqual,
@@ -309,7 +306,6 @@ namespace Compiler.Lexer
                             };
                         case '!':
                             lexeme.Append(currentChar);
-                            GetNextChar();
                             return new Token
                             {
                                 TokenType = TokenType.Not,
@@ -409,7 +405,7 @@ namespace Compiler.Lexer
                     case '\0':
                         return new Token
                         {
-                            TokenType = TokenType.EOF,
+                            TokenType = TokenType.Eof,
                             Column = _input.Position.Column,
                             Line = _input.Position.Line,
                             Lexeme = string.Empty
@@ -441,7 +437,16 @@ namespace Compiler.Lexer
                             Line = _input.Position.Line,
                             Lexeme = lexeme.ToString()
                         };
-                    default:
+                    case '%':
+                        lexeme.Append(currentChar);
+                        return new Token
+                        {
+                            TokenType = TokenType.Mod,
+                            Column = _input.Position.Column,
+                            Line = _input.Position.Line,
+                            Lexeme = lexeme.ToString()
+                        };
+                        default:
                         throw new ApplicationException($"Caracter {lexeme} invalido en la columna: {_input.Position.Column}, fila: {_input.Position.Line}");
                 }
             }

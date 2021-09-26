@@ -1,14 +1,11 @@
 ﻿using System;
 using Compiler.Core.Expressions;
-using Compiler.Core.Interfaces;
 using Compiler.Core.Models.Lexer;
 using Compiler.Core.Models.Parser;
-using Environment = System.Environment;
-using Type = Compiler.Core.Models.Parser.Type;
 
 namespace Compiler.Core.Statements
 {
-    public class IncrementStatement : Statement, ISemanticValidation
+    public class IncrementStatement : Statement
     {
         public Id Id { get; }
         public Token Token { get; }

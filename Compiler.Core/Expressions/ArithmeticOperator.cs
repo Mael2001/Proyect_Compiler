@@ -19,8 +19,6 @@ namespace Compiler.Core.Expressions
                 { (Type.String, Type.String), Type.String },
                 { (Type.Float, Type.Int), Type.Float },
                 { (Type.Int, Type.Float), Type.Float },
-                { (Type.String, Type.Int), Type.String  },
-                { (Type.String, Type.Float), Type.String  },
                 { (Type.Float, Type.String), Type.String},
                 { (Type.Date, Type.Date), Type.Date},
                 { (Type.Date, Type.Int), Type.Date}
@@ -35,6 +33,7 @@ namespace Compiler.Core.Expressions
                 TokenType.Minus => LeftExpression.Evaluate() - RightExpression.Evaluate(),
                 TokenType.Asterisk => LeftExpression.Evaluate() * RightExpression.Evaluate(),
                 TokenType.Division => LeftExpression.Evaluate() / RightExpression.Evaluate(),
+                TokenType.Mod => LeftExpression.Evaluate() % RightExpression.Evaluate(),
                 _ => throw new NotImplementedException()
             };
         }

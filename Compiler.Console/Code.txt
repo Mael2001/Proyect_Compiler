@@ -21,6 +21,7 @@ o:= 5.89;
 Date date;
 datex := 09/12/2021;
 lista := 1;
+/*Commentario de Prueba */
 {
     {
         {
@@ -37,15 +38,23 @@ q--;
 a := o + 'hola peter!';
 foreach(x in lista)
 {
-q++;
+x++;
 q--;
+}
+foreach(yy in lista1)
+{
+yy := a + a;
+}
+foreach(zz in lista2)
+{
+zz++;
 }
 while(o >= 10 || x>12)
 q++;
 Console.WriteLine(q);
 Console.ReadLine(q);
 
-if( ! x>y && ! y>10 || ! xx > 50 && ! xx < 100 && xx<300)
+if(!x>y && !y>10 || !xx > 50 && !xx < 100 && xx<300)
 {
     int xxx;
     q := 10;
@@ -55,9 +64,9 @@ if( ! x>y && ! y>10 || ! xx > 50 && ! xx < 100 && xx<300)
 }
 else
     q:= 'adios';
-y:=6+2+3+5;
+y:=6+2-3*5*2%2;
 
-if(! x>1 )
+if(!x>1 )
     x++;
 
 }

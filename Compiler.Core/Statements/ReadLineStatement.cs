@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Runtime.InteropServices.ComTypes;
-using Compiler.Core.Interfaces;
 using Compiler.Core.Models.Lexer;
 using Compiler.Core.Models.Parser;
 
 namespace Compiler.Core.Statements
 {
-    public class ReadLineStatement: Statement, ISemanticValidation
+    public class ReadLineStatement: Statement
     {
         public Token Token { get; }
 

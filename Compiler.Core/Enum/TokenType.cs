@@ -24,7 +24,7 @@
         Assignation,
         StringConstant,
         DateConstant,
-        EOF,
+        Eof,
         OpenBrace,
         CloseBrace,
         Comma,
@@ -54,6 +54,7 @@
         ConsoleKeyword,
         WriteLineKeyword,
         ReadLineKeyword,
-        Decimal
+        Decimal,
+        Mod
     }
 }

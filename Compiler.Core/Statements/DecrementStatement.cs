@@ -1,13 +1,11 @@
 ﻿using System;
 using Compiler.Core.Expressions;
-using Compiler.Core.Interfaces;
 using Compiler.Core.Models.Lexer;
 using Compiler.Core.Models.Parser;
-using Environment = System.Environment;
 
 namespace Compiler.Core.Statements
 {
-    public class DecrementStatement: Statement, ISemanticValidation
+    public class DecrementStatement: Statement
     {
         public Id Id { get; }
         public Token Token { get; }

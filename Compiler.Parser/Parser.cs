@@ -162,8 +162,6 @@ namespace Compiler.Parser
                     Match(TokenType.LeftParens);
                     var token1 = _lookAhead;
                     Match(TokenType.Identifier);
-                    var id1 = new Id(token1, Type.Void);
-                    EnvironmentManager.AddVariable(token1.Lexeme, id1);
 
                     Match(TokenType.InKeyword);
                     var token2 = _lookAhead;
@@ -172,9 +170,19 @@ namespace Compiler.Parser
                     {
                         throw new ApplicationException($"Variable {token2.Lexeme} Doesn't Exist");
                     }
-                    else if(EnvironmentManager.GetSymbolForEvaluation(token2.Lexeme).Id.Type != Type.IntList)
+                    switch (EnvironmentManager.GetSymbolForEvaluation(token2.Lexeme).Id.Type.Lexeme)
                     {
-                        throw new ApplicationException($"Variable {token2.Lexeme} Is not a List");
+                            case "List<int>":
+                                EnvironmentManager.AddVariable(token1.Lexeme, new Id(token1, Type.Int));
+                                break;
+                            case "List<float>":
+                                EnvironmentManager.AddVariable(token1.Lexeme, new Id(token1, Type.Float));
+                                break;
+                            case "List<string>":
+                                EnvironmentManager.AddVariable(token1.Lexeme, new Id(token1, Type.String));
+                                break;
+                            default:
+                                throw new ApplicationException($"Variable {token2.Lexeme} Is not a List");
                     }
                     Match(TokenType.RightParens);
                     statement1 = Stmt();
@@ -331,7 +339,7 @@ namespace Compiler.Parser
         private Expression Term()
         {
             var expression = Factor();
-            while (this._lookAhead.TokenType == TokenType.Asterisk || this._lookAhead.TokenType == TokenType.Division)
+            while (this._lookAhead.TokenType == TokenType.Asterisk || this._lookAhead.TokenType == TokenType.Division || this._lookAhead.TokenType == TokenType.Mod)
             {
                 var token = _lookAhead;
                 Move();

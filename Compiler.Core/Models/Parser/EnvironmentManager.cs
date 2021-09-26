@@ -8,31 +8,30 @@ namespace Compiler.Core.Models.Parser
 {
     public static class EnvironmentManager
     {
-        private static List<Environment> _contexts = new List<Environment>();
-        private static List<Environment> _interpretContexts = new List<Environment>();
-        private static int _currentIndex = -1;
+        private static readonly List<Environment> Contexts = new List<Environment>();
+        private static readonly List<Environment> InterpretContexts = new List<Environment>();
 
         public static Environment PushContext()
         {
             var env = new Environment();
-            _contexts.Add(env);
-            _interpretContexts.Add(env);
+            Contexts.Add(env);
+            InterpretContexts.Add(env);
             return env;
         }
 
         public static Environment PopContext()
         {
-            var lastContext = _contexts.Last();
-            _contexts.Remove(lastContext);
+            var lastContext = Contexts.Last();
+            Contexts.Remove(lastContext);
             return lastContext;
         }
 
 
         public static Symbol GetSymbol(string lexeme)
         {
-            for (int i = _contexts.Count - 1; i >= 0; i--)
+            for (int i = Contexts.Count - 1; i >= 0; i--)
             {
-                var context = _contexts[i];
+                var context = Contexts[i];
                 var symbol = context.Get(lexeme);
                 if (symbol != null)
                 {
@@ -45,7 +44,7 @@ namespace Compiler.Core.Models.Parser
 
         public static Symbol GetSymbolForEvaluation(string lexeme)
         {
-            foreach (var context in _interpretContexts)
+            foreach (var context in InterpretContexts)
             {
                 var symbol = context.Get(lexeme);
                 if (symbol != null)
@@ -58,15 +57,15 @@ namespace Compiler.Core.Models.Parser
         }
 
         public static void AddMethod(string lexeme, Id id, BinaryOperator arguments) =>
-            _contexts.Last().AddMethod(lexeme, id, arguments);
+            Contexts.Last().AddMethod(lexeme, id, arguments);
 
-        public static void AddVariable(string lexeme, Id id) => _contexts.Last().AddVariable(lexeme, id);
+        public static void AddVariable(string lexeme, Id id) => Contexts.Last().AddVariable(lexeme, id);
 
         public static void UpdateVariable(string lexeme, dynamic value)
         {
-            for (int i = _contexts.Count - 1; i >= 0; i--)
+            for (int i = Contexts.Count - 1; i >= 0; i--)
             {
-                var context = _contexts[i];
+                var context = Contexts[i];
                 var symbol = context.Get(lexeme);
                 if (symbol != null)
                 {

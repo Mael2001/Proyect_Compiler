@@ -1,11 +1,10 @@
 ﻿using System;
 using Compiler.Core.Expressions;
-using Compiler.Core.Interfaces;
 using Type = Compiler.Core.Models.Parser.Type;
 
 namespace Compiler.Core.Statements
 {
-    public class WhileStatement : Statement, ISemanticValidation
+    public class WhileStatement : Statement
     {
         public WhileStatement(TypedExpression expression, Statement statement)
         {

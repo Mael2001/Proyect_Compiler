@@ -4,16 +4,16 @@ namespace Compiler.Core.Engine
 {
     public class CompilerEngine
     {
-        private readonly IParser parser;
+        private readonly IParser _parser;
 
         public CompilerEngine(IParser parser)
         {
-            this.parser = parser;
+            this._parser = parser;
         }
 
         public void Run()
         {
-            var intermediateCode = this.parser.Parse();
+            var intermediateCode = this._parser.Parse();
         }
     }
 }

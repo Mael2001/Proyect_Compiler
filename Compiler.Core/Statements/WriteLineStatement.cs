@@ -1,11 +1,10 @@
 ﻿using System;
-using Compiler.Core.Interfaces;
 using Compiler.Core.Models.Lexer;
 using Compiler.Core.Models.Parser;
 
 namespace Compiler.Core.Statements
 {
-    public class WriteLineStatement: Statement, ISemanticValidation
+    public class WriteLineStatement: Statement
     {
         public Token Token { get; }
 

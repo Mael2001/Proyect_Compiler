@@ -5,9 +5,9 @@ namespace Compiler.Core.Models.Parser
 {
     public class Type : IEquatable<Type>
     {
-        public string Lexeme { get; private set; }
+        public string Lexeme { get; }
 
-        public TokenType TokenType { get; private set; }
+        public TokenType TokenType { get; }
         public Type(string lexeme, TokenType tokenType)
         {
             Lexeme = lexeme;
@@ -46,9 +46,9 @@ namespace Compiler.Core.Models.Parser
             return HashCode.Combine(Lexeme, (int)TokenType);
         }
 
-        public static bool operator ==(Type a, Type b) => a.Equals(b);
+        public static bool operator ==(Type a, Type b) => a is { } && a.Equals(b);
 
-        public static bool operator !=(Type a, Type b) => !a.Equals(b);
+        public static bool operator !=(Type a, Type b) => a is { } && !a.Equals(b);
 
         public override string ToString()
         {

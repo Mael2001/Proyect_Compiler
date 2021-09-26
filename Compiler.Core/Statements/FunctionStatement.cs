@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Compiler.Core.Interfaces;
 using Compiler.Core.Models.Lexer;
 
 namespace Compiler.Core.Statements
 {
-    public class FunctionStatement: Statement, ISemanticValidation
+    public class FunctionStatement: Statement
     {
 
         public Statement Statement { get; }

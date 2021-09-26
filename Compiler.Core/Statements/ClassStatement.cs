@@ -15,7 +15,7 @@ namespace Compiler.Core.Statements
         }
         public override void Interpret()
         {
-
+            Statement?.Interpret();
         }
 
         public override void ValidateSemantic()
