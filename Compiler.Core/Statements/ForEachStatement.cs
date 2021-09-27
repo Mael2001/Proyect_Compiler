@@ -25,8 +25,9 @@ namespace Compiler.Core.Statements
 
         public override string Generate(int tabs)
         {
+            //array1.forEach(element => console.log(element));
             var code = GetCodeInit(tabs);
-            code += $"{Token2.Lexeme}.foreach(";
+            code += $"{Token2.Lexeme}.forEach(";
             code += $"function({Token1.Lexeme})";
             code += "\n\t{\n";
             code += $"{Statement.Generate(tabs + 1)}";

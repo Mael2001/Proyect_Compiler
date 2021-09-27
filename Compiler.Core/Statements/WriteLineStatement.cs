@@ -30,7 +30,7 @@ namespace Compiler.Core.Statements
         {
             var code = "\n";
             code += GetCodeInit(tabs);
-            code += $"alert(`Input entered is: ${{{Token.Lexeme}}}`); ";
+            code += $"alert(\"Input entered is:\"+" +Token.Lexeme+"); ";
             code += "\n";
             return code;
         }

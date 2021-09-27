@@ -1,7 +1,31 @@
 ﻿class bruh{
+    int clase1;
+    clase1:=1;
+    ListInt pruebaLista1;
+    pruebaLista1:=123;
+foreach(yy in pruebaLista1)
+{
+Console.WriteLine(yy);
+}
 class bruh2{
+    int clase2;
+    clase2:=1;
+    ListFloat pruebaLista2;
+    pruebaLista2:=123;
+foreach(yy in pruebaLista2)
+{
+Console.WriteLine(yy);
+}
 }
 class bruski{
+    int clase3;
+    clase3:=1;
+    ListString pruebaLista3;
+    pruebaLista3:='123';
+foreach(yy in pruebaLista3)
+{
+Console.WriteLine(yy);
+}
 }
 void prueba(arg1, arg2){
 arg1 := 1;
@@ -17,12 +41,21 @@ Date datex;
 string a;
 string b;
 xx:=5;
+q:=12312;
 w:=4;
 o:= 5.89;
 Date date;
+int xxx;
+xxx:=123;
 datex := 09/12/2021;
 lista := 1;
+lista1 := '1';
+lista2 := 1;
 /*Commentario de Prueba */
+/*Comentario
+  de
+  Prueba 2
+  */
 {
     {
         {
@@ -42,20 +75,24 @@ foreach(x in lista)
 {
 x++;
 q--;
+Console.WriteLine(x);
 }
 foreach(yy in lista1)
 {
 yy := a + 'asdasd';
 yy := a + b;
+Console.WriteLine(yy);
 }
 foreach(zz in lista2)
 {
 zz++;
+Console.WriteLine(zz);
 }
 while(o >= 10 || x>12)
 q++;
 Console.WriteLine(q);
 Console.ReadLine(q);
+Console.WriteLine(q);
 
 if(!x>y && !y>10 || !xx > 50 && !xx < 100 && xx<300)
 {

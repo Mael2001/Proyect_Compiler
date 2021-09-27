@@ -21,7 +21,14 @@ namespace Compiler.Core.Statements
         {
             var code = "\n";
             code += GetCodeInit(tabs);
-            code += $"var {Id.Generate()} = {Expression.Generate()}{Environment.NewLine}";
+            if (Id.GetExpressionType()==Type.IntList || Id.GetExpressionType() == Type.FloatList || Id.GetExpressionType() == Type.StringList)
+            {
+                code += $"const {Id.Generate()} = [{Expression.Generate()},{Expression.Generate()}];{Environment.NewLine}";
+            }
+            else
+            {
+                code += $"var {Id.Generate()} = {Expression.Generate()}{Environment.NewLine}";
+            }
             return code;
         }
 

@@ -109,6 +109,10 @@ namespace Compiler.Parser
                 case TokenType.Identifier:
                     {
                         var symbol = EnvironmentManager.GetSymbol(this._lookAhead.Lexeme);
+                        if (EnvironmentManager.GetSymbolForEvaluation(symbol.Id.Token.Lexeme) == null)
+                        {
+                            throw new ApplicationException($"Variable {symbol.Id.Token.Lexeme} Doesn't Exist");
+                        }
                         Match(TokenType.Identifier);
                         if (this._lookAhead.TokenType == TokenType.Assignation)
                         {
