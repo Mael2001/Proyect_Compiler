@@ -2,7 +2,7 @@
     int clase1;
     clase1:=1;
     ListInt pruebaLista1;
-    pruebaLista1:=123;
+    pruebaLista1:=[123];
 foreach(yy in pruebaLista1)
 {
 Console.WriteLine(yy);
@@ -11,7 +11,7 @@ class bruh2{
     int clase2;
     clase2:=1;
     ListFloat pruebaLista2;
-    pruebaLista2:=123;
+    pruebaLista2:=[123,12312,123123];
 foreach(yy in pruebaLista2)
 {
 Console.WriteLine(yy);
@@ -21,7 +21,7 @@ class bruski{
     int clase3;
     clase3:=1;
     ListString pruebaLista3;
-    pruebaLista3:='123';
+    pruebaLista3:=['123'];
 foreach(yy in pruebaLista3)
 {
 Console.WriteLine(yy);
@@ -48,9 +48,9 @@ Date date;
 int xxx;
 xxx:=123;
 datex := 09/12/2021;
-lista := 1;
-lista1 := '1';
-lista2 := 1;
+lista := [1];
+lista1 := ['1'];
+lista2 :=[1];
 /*Commentario de Prueba */
 /*Comentario
   de

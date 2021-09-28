@@ -446,6 +446,24 @@ namespace Compiler.Lexer
                             Line = _input.Position.Line,
                             Lexeme = lexeme.ToString()
                         };
+                    case '[':
+                        lexeme.Append(currentChar);
+                        return new Token
+                        {
+                            TokenType = TokenType.OpenList,
+                            Column = _input.Position.Column,
+                            Line = _input.Position.Line,
+                            Lexeme = lexeme.ToString()
+                        };
+                    case ']':
+                        lexeme.Append(currentChar);
+                        return new Token
+                        {
+                            TokenType = TokenType.CloseList,
+                            Column = _input.Position.Column,
+                            Line = _input.Position.Line,
+                            Lexeme = lexeme.ToString()
+                        };
                         default:
                         throw new ApplicationException($"Caracter {lexeme} invalido en la columna: {_input.Position.Column}, fila: {_input.Position.Line}");
                 }

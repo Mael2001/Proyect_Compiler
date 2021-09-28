@@ -424,6 +424,27 @@ namespace Compiler.Parser
         private Statement AssignStmt(Id id)
         {
             Match(TokenType.Assignation);
+            if (this._lookAhead.TokenType==TokenType.OpenList)
+            {
+                var argumentList = new List<Token>();
+                var token = this._lookAhead;
+                Match(TokenType.OpenList);
+                while (this._lookAhead.TokenType == TokenType.IntConstant ||
+                       this._lookAhead.TokenType == TokenType.FloatConstant ||
+                       this._lookAhead.TokenType == TokenType.StringConstant )
+                {
+                    token = _lookAhead;
+                    argumentList.Add(token);
+                    Match(token.TokenType);
+                    if (_lookAhead.TokenType == TokenType.Comma)
+                    {
+                        Match(TokenType.Comma);
+                    }
+                }
+                Match(TokenType.CloseList);
+                Match(TokenType.SemiColon);
+                return new ListAssination(id, argumentList);
+            }
             var expression = Eq();
             Match(TokenType.SemiColon);
             return new AssignationStatement(id, expression as TypedExpression);

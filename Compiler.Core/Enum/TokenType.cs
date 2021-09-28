@@ -55,6 +55,8 @@
         WriteLineKeyword,
         ReadLineKeyword,
         Decimal,
-        Mod
+        Mod,
+        OpenList,
+        CloseList,
     }
 }
